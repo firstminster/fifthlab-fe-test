@@ -46,7 +46,7 @@ const UserLists = () => {
 
     return (
         <div className="bg-[#F7F7FF] w-full rounded-[30px] h-auto  py-20 px-10 mt-20 xl:mt-0 ">
-            <FilterHeader />
+            <FilterHeader pageStep={pageStep} />
             {pageStep >= 0 && (
                 <div className="">
                     {currentRecords?.map((item: any, idx: number) => {
