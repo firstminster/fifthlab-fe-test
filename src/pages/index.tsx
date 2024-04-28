@@ -1,4 +1,5 @@
 import LeftSide from "@/components/LeftSide";
+import RightSide from "@/components/RightSide";
 
 
 export default function Home() {
@@ -6,13 +7,8 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-wrap xl:flex-nowrap justify-between p-5 lg:p-10 bg-[#262b40] font-sans`}
     >
-      {/* left side */}
       <LeftSide />
-
-      {/* right side */}
-      <div className="bg-white w-full rounded-[30px] h-auto  p-10 ">
-        Right
-      </div>
+      <RightSide />
     </main>
   );
 }
