@@ -6,7 +6,7 @@ import Input from './input'
 
 const LeftSide = () => {
     return (
-        <div className="w-full px-20 my-auto">
+        <div className="w-full  px-20 my-auto pt-10 xl:pt-0">
             <h2 className="text-3xl text-white font-thin mb-8">Hello, <span className="font-black ">Emerald</span> </h2>
             <p className="text-white font-thin text-sm mb-5">Welcome to your dashboard, kindly sort through the user base</p>
             <Input name={'users'} type={'text'} placeholder={'Find a user'} cssstyles={'h-16 w-full pl-16 rounded-2xl text-xl placeholder:text-[#3f4350] focus:outline-none bg-[#7c808d]'} />
