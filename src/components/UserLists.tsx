@@ -3,6 +3,7 @@ import Input from './input'
 import UserCard from './UserCard'
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos, MdOutlineCloudDownload } from 'react-icons/md'
 import FilterHeader from './FilterHeader'
+import UserDetails from './UserDetails'
 
 const UserLists = () => {
     return (
@@ -11,6 +12,8 @@ const UserLists = () => {
             <div className="">
                 <UserCard />
             </div>
+
+            <UserDetails />
 
             <div className="flex justify-between">
                 <button className='bg-[#7846C1] flex items-center justify-center text-sm font-medium text-white px-5 py-3 rounded-full hover:bg-opacity-90 h-14'><MdOutlineCloudDownload size={25} className='mr-4' />Download Results</button>
