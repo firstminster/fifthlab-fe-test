@@ -3,9 +3,21 @@ import StdImage from './atom/StdImage'
 import { FaArrowRight } from 'react-icons/fa'
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md'
 
-const UserCard = () => {
+
+export interface Props {
+    viewUserDetails: (item: any) => void;
+    pageStep: number
+}
+
+const UserCard = ({ viewUserDetails, pageStep }: Props) => {
+
+    const getUserData = () => {
+        // viewUserDetails()
+    }
+
+
     return (
-        <div className='bg-white w-full  px-6 py-10 rounded-xl shadow-xl my-10' >
+        <section className={pageStep === 0 ? "bg-white w-full  px-6 py-10 rounded-xl shadow-xl my-10" : "hidden"}>
             <div className="flex items-end justify-between">
                 <StdImage
                     src='/images/images-diaz.jpeg'
@@ -26,9 +38,9 @@ const UserCard = () => {
                         <p className="flex items-center mr-10 "><MdOutlinePhoneInTalk className='mr-2' />031-623-5189</p>
                     </div>
                 </div>
-                <button className='bg-[#74D6D0] py-4 px-6 rounded-xl shadow-xl hover:bg-opacity-90 ' ><FaArrowRight className='text-white ' size={20} /></button>
+                <button onClick={getUserData} className='bg-[#74D6D0] py-4 px-6 rounded-xl shadow-xl hover:bg-opacity-90 ' ><FaArrowRight className='text-white ' size={20} /></button>
             </div>
-        </div>
+        </section>
     )
 }
 

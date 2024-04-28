@@ -3,10 +3,15 @@ import StdImage from './atom/StdImage'
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md'
 import { FaArrowLeft } from 'react-icons/fa'
 
-const UserDetails = () => {
+export interface Props {
+    goBackToList: () => void;
+    pageStep: number
+}
+
+const UserDetails = ({ goBackToList, pageStep }: Props) => {
     return (
-        <div className='my-20'>
-            <button className='flex items-center uppercase mb-6' ><FaArrowLeft className='text-[#74D6D0] mr-4' size={20} /> Results</button>
+        <div className={pageStep === 1 ? "my-20" : "hidden"}>
+            <button onClick={goBackToList} className='flex items-center uppercase mb-6' ><FaArrowLeft className='text-[#74D6D0] mr-4' size={20} /> Results</button>
             <div className="flex items-start justify-start">
                 <StdImage
                     src='/images/images-diaz.jpeg'
