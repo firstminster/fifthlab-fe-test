@@ -7,6 +7,7 @@ import UserDetails from './UserDetails'
 // import { useAppDispatch, useAppSelector } from '@/redux/store'
 import { getAllUsers, userSelector } from '@/features/user'
 import { useAppDispatch, useAppSelector } from '@/hooks'
+import Pagination from './Pagination'
 
 const UserLists = () => {
     const dispatch = useAppDispatch();
@@ -48,7 +49,7 @@ const UserLists = () => {
             <FilterHeader />
             {pageStep >= 0 && (
                 <div className="">
-                    {users?.map((item: any, idx: number) => {
+                    {currentRecords?.map((item: any, idx: number) => {
                         return (
                             <UserCard key={item.cell} viewUserDetails={viewUserDetails} pageStep={pageStep} item={item} />
                         )
@@ -63,10 +64,13 @@ const UserLists = () => {
             <div className="flex justify-between">
                 <button disabled={pageStep === 1} className='bg-[#7846C1] flex items-center justify-center text-sm font-medium text-white px-5 py-3 rounded-full hover:bg-opacity-90 h-14'><MdOutlineCloudDownload size={25} className='mr-4' />Download Results</button>
 
-                <div className="flex gap-5">
-                    <button disabled={pageStep === 1} className="bg-[#D2D3DA] h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90"><MdOutlineArrowBackIosNew /></button>
-                    <button disabled={pageStep === 1} className="bg-[#262B40] text-white  h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90"><MdOutlineArrowForwardIos /></button>
-                </div>
+
+                <Pagination
+                    pageStep={pageStep}
+                    nPages={nPages}
+                    currentPage={currentPage}
+                    setCurrentPage={setCurrentPage}
+                />
             </div>
         </div>
 
