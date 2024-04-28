@@ -1,16 +1,28 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Input from './input'
 import UserCard from './UserCard'
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos, MdOutlineCloudDownload } from 'react-icons/md'
 import FilterHeader from './FilterHeader'
 import UserDetails from './UserDetails'
+// import { useAppDispatch, useAppSelector } from '@/redux/store'
+import { getAllUsers, userSelector } from '@/features/user'
+import { useAppDispatch, useAppSelector } from '@/hooks'
 
 const UserLists = () => {
+    const dispatch = useAppDispatch();
     const [pageStep, setPageStep] = useState(0);
+    const [userData, setUserData] = useState(0);
+
+    const {
+        users,
+        pending,
+        error,
+    } = useAppSelector(userSelector);
 
     // handle single user view
     const viewUserDetails = (item: any) => {
         setPageStep((cur) => cur + 1);
+        setUserData(item);
         console.log(item);
     }
 
@@ -19,17 +31,28 @@ const UserLists = () => {
         setPageStep((cur) => cur - 1);
     }
 
+    useEffect(() => {
+        dispatch(getAllUsers())
+    }, [])
+
+    console.log(users);
+
     return (
         <div className="bg-[#F7F7FF] w-full rounded-[30px] h-auto  py-20 px-10 mt-20 xl:mt-0 ">
             <FilterHeader />
             {pageStep >= 0 && (
                 <div className="">
-                    <UserCard viewUserDetails={viewUserDetails} pageStep={pageStep} />
+                    {users?.map((item: any, idx: number) => {
+                        const { name: { first, last }, } = item
+                        return (
+                            <UserCard key={item.cell} viewUserDetails={viewUserDetails} pageStep={pageStep} item={item} />
+                        )
+                    })}
                 </div>
             )}
 
             {pageStep >= 1 && (
-                <UserDetails goBackToList={goBackToList} pageStep={pageStep} />
+                <UserDetails goBackToList={goBackToList} pageStep={pageStep} user={userData} />
             )}
 
             <div className="flex justify-between">
@@ -47,3 +70,4 @@ const UserLists = () => {
 }
 
 export default UserLists
+

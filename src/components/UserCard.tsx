@@ -7,12 +7,14 @@ import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md'
 export interface Props {
     viewUserDetails: (item: any) => void;
     pageStep: number
+    item: any
 }
 
-const UserCard = ({ viewUserDetails, pageStep }: Props) => {
+const UserCard = ({ viewUserDetails, pageStep, item }: Props) => {
+    const { name: { first, last }, location: { street: { name, number } }, picture: { large }, email, cell } = item;
 
     const getUserData = () => {
-        // viewUserDetails()
+        viewUserDetails(item)
     }
 
 
@@ -20,7 +22,7 @@ const UserCard = ({ viewUserDetails, pageStep }: Props) => {
         <section className={pageStep === 0 ? "bg-white w-full  px-6 py-10 rounded-xl shadow-xl my-10" : "hidden"}>
             <div className="flex items-end justify-between">
                 <StdImage
-                    src='/images/images-diaz.jpeg'
+                    src={large}
                     alt="lendsqr-logo"
                     className="rounded-full border-8 border-[#74D6D0]"
                     width={120}
@@ -28,14 +30,14 @@ const UserCard = ({ viewUserDetails, pageStep }: Props) => {
                 />
                 <div className="">
                     <h3 className="text-xl font-bold">
-                        Diaz Ramirez
+                        {first} {last}
                     </h3>
                     <p className="mt-2 text-lg font-light italic">
-                        2479, Blessington, Wexford, Nigeria
+                        {number}, {name}, Nigeria
                     </p>
                     <div className="flex items-center mt-8 w-full">
-                        <p className="flex items-center mr-5"><MdOutlineMailOutline className='mr-2' />laura.woods@example.com</p>
-                        <p className="flex items-center mr-10 "><MdOutlinePhoneInTalk className='mr-2' />031-623-5189</p>
+                        <p className="flex items-center mr-5"><MdOutlineMailOutline className='mr-2' />{email}</p>
+                        <p className="flex items-center mr-10 "><MdOutlinePhoneInTalk className='mr-2' />{cell}</p>
                     </div>
                 </div>
                 <button onClick={getUserData} className='bg-[#74D6D0] py-4 px-6 rounded-xl shadow-xl hover:bg-opacity-90 ' ><FaArrowRight className='text-white ' size={20} /></button>
