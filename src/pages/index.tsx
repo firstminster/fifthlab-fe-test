@@ -1,5 +1,5 @@
-import LeftSide from "@/components/LeftSide";
-import RightSide from "@/components/RightSide";
+import UserSearch from "@/components/UserSearch";
+import UserLists from "@/components/UserLists";
 
 
 export default function Home() {
@@ -7,8 +7,8 @@ export default function Home() {
     <main
       className={`flex min-h-screen flex-wrap xl:flex-nowrap justify-between p-5 lg:p-10 bg-[#262b40] font-sans`}
     >
-      <LeftSide />
-      <RightSide />
+      <UserSearch />
+      <UserLists />
     </main>
   );
 }

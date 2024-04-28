@@ -4,11 +4,10 @@ import UserCard from './UserCard'
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos, MdOutlineCloudDownload } from 'react-icons/md'
 import FilterHeader from './FilterHeader'
 
-const RightSide = () => {
+const UserLists = () => {
     return (
         <div className="bg-[#F7F7FF] w-full rounded-[30px] h-auto  py-20 px-10 mt-20 xl:mt-0 ">
             <FilterHeader />
-
             <div className="">
                 <UserCard />
             </div>
@@ -25,4 +24,4 @@ const RightSide = () => {
     )
 }
 
-export default RightSide
+export default UserLists

@@ -4,7 +4,7 @@ import FilterCard from './FilterCard'
 import { FaFemale, FaMale, FaUsers } from 'react-icons/fa'
 import Input from './input'
 
-const LeftSide = () => {
+const UserSearch = () => {
     return (
         <div className="w-full  px-20 my-auto pt-10 xl:pt-0">
             <h2 className="text-3xl text-white font-thin mb-8">Hello, <span className="font-black ">Emerald</span> </h2>
@@ -23,4 +23,4 @@ const LeftSide = () => {
     )
 }
 
-export default LeftSide
+export default UserSearch
