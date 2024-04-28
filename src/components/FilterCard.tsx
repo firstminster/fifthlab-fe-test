@@ -1,13 +1,13 @@
 import React, { ReactElement } from 'react'
 
-export interface SortCardProps {
+export interface FilterCardProps {
     name: string;
     icon: ReactElement;
     bgColor: string
 }
 
 
-const SortCard = ({ name, icon, bgColor }: SortCardProps) => {
+const FilterCard = ({ name, icon, bgColor }: FilterCardProps) => {
     return (
         <div className={`flex flex-col w-full`}>
             <button className={`  h-24 mt-5 ${bgColor}  flex items-center justify-center rounded-3xl`} >{icon && icon}</button>
@@ -17,4 +17,4 @@ const SortCard = ({ name, icon, bgColor }: SortCardProps) => {
 }
 
 
-export default SortCard
+export default FilterCard

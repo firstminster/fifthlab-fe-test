@@ -1,6 +1,6 @@
 import React from 'react'
 import { SlMagnifier } from 'react-icons/sl'
-import SortCard from './SortCard'
+import FilterCard from './FilterCard'
 import { FaFemale, FaMale, FaUsers } from 'react-icons/fa'
 
 const LeftSide = () => {
@@ -16,9 +16,9 @@ const LeftSide = () => {
             <div className="mt-16">
                 <h4 className="text-white text-sm ">Show Users</h4>
                 <div className="flex justify-between gap-20">
-                    <SortCard name={'All users'} icon={<FaUsers size={40} className='text-white' />} bgColor='bg-[#F935A9]' />
-                    <SortCard name={'Male users'} icon={<FaMale size={40} className='text-white' />} bgColor='bg-[#2EBCB5]' />
-                    <SortCard name={'Female users'} icon={<FaFemale size={40} className='text-white' />} bgColor='bg-[#7846C1]' />
+                    <FilterCard name={'All users'} icon={<FaUsers size={40} className='text-white' />} bgColor='bg-[#F935A9]' />
+                    <FilterCard name={'Male users'} icon={<FaMale size={40} className='text-white' />} bgColor='bg-[#2EBCB5]' />
+                    <FilterCard name={'Female users'} icon={<FaFemale size={40} className='text-white' />} bgColor='bg-[#7846C1]' />
                 </div>
             </div>
         </div>
