@@ -1,9 +1,5 @@
 import LeftSide from "@/components/LeftSide";
-import Image from "next/image";
-// import { Inter } from "next/font/google";
-import { SlMagnifier } from "react-icons/sl";
 
-// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   return (
