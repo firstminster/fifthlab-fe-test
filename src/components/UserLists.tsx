@@ -12,6 +12,8 @@ const UserLists = () => {
     const dispatch = useAppDispatch();
     const [pageStep, setPageStep] = useState(0);
     const [userData, setUserData] = useState(0);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [recordsPerPage] = useState(3);
 
     const {
         users,
@@ -35,7 +37,11 @@ const UserLists = () => {
         dispatch(getAllUsers())
     }, [])
 
-    console.log(users);
+    // pagination
+    const indexOfLastRecord = currentPage * recordsPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
+    const currentRecords = users.slice(indexOfFirstRecord, indexOfLastRecord);
+    const nPages = Math.ceil(users.length / recordsPerPage)
 
     return (
         <div className="bg-[#F7F7FF] w-full rounded-[30px] h-auto  py-20 px-10 mt-20 xl:mt-0 ">
@@ -43,7 +49,6 @@ const UserLists = () => {
             {pageStep >= 0 && (
                 <div className="">
                     {users?.map((item: any, idx: number) => {
-                        const { name: { first, last }, } = item
                         return (
                             <UserCard key={item.cell} viewUserDetails={viewUserDetails} pageStep={pageStep} item={item} />
                         )
@@ -56,11 +61,11 @@ const UserLists = () => {
             )}
 
             <div className="flex justify-between">
-                <button className='bg-[#7846C1] flex items-center justify-center text-sm font-medium text-white px-5 py-3 rounded-full hover:bg-opacity-90 h-14'><MdOutlineCloudDownload size={25} className='mr-4' />Download Results</button>
+                <button disabled={pageStep === 1} className='bg-[#7846C1] flex items-center justify-center text-sm font-medium text-white px-5 py-3 rounded-full hover:bg-opacity-90 h-14'><MdOutlineCloudDownload size={25} className='mr-4' />Download Results</button>
 
                 <div className="flex gap-5">
-                    <button className="bg-[#D2D3DA] h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90"><MdOutlineArrowBackIosNew /></button>
-                    <button className="bg-[#262B40] text-white  h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90"><MdOutlineArrowForwardIos /></button>
+                    <button disabled={pageStep === 1} className="bg-[#D2D3DA] h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90"><MdOutlineArrowBackIosNew /></button>
+                    <button disabled={pageStep === 1} className="bg-[#262B40] text-white  h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90"><MdOutlineArrowForwardIos /></button>
                 </div>
             </div>
         </div>
