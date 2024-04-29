@@ -47,9 +47,8 @@ const UserLists = () => {
     const filterSearchTerm = (e: any) => {
         setSearchTerm(e.target.value);
     };
-    const filterByNationality = (query: any) => {
-        // setSearchTerm(e.target.value);
-        dispatch(getUserByNationality(query))
+    const filterByNationality = (e: any) => {
+        dispatch(getUserByNationality(e.target.value))
     };
 
     useEffect(() => {
@@ -81,7 +80,7 @@ const UserLists = () => {
 
     return (
         <div className="bg-[#F7F7FF] w-full rounded-[30px] h-auto py-20 px-10 mt-20 xl:mt-0 ">
-            <FilterHeader pageStep={pageStep} filterSearchTerm={filterSearchTerm} searchTerm={searchTerm} countries={countries} filterByNationality={filterByNationality} />
+            <FilterHeader pageStep={pageStep} filterSearchTerm={filterSearchTerm} searchTerm={searchTerm} filterByNationality={filterByNationality} />
             {pageStep >= 0 && (
                 <div className="">
                     {currentRecords?.map((item: User, idx: number) => {
