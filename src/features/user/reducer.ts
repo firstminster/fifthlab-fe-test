@@ -1,10 +1,11 @@
 import { createReducer, PayloadAction } from '@reduxjs/toolkit';
-import { filterUserByGender, getAllUsers, getUserByGender, searchByName } from './actions';
+import { filterUserByGender, getAllUsers, getUserCSV, searchByName } from './actions';
 import User from '@/types';
 
 type UserState = {
     users: User[];
     filteredUsers: User[];
+    response: any;
     pending: boolean;
     error: boolean;
 }
@@ -12,6 +13,7 @@ type UserState = {
 const initialState: UserState = {
     users: [],
     filteredUsers: [],
+    response: null,
     pending: false,
     error: false
 }
@@ -28,34 +30,34 @@ export const userReducer = createReducer(initialState, builder => {
     }).addCase(getAllUsers.rejected, state => {
         state.pending = false;
         state.error = true;
-    }).addCase(getUserByGender.pending, state => {
+    }).addCase(getUserCSV.pending, state => {
         state.pending = true;
         state.error = false;
-    }).addCase(getUserByGender.fulfilled, (state, { payload }) => {
+    }).addCase(getUserCSV.fulfilled, (state, { payload }) => {
         state.pending = false;
-        state.users = payload;
-    }).addCase(getUserByGender.rejected, state => {
+        state.response = payload;
+    }).addCase(getUserCSV.rejected, state => {
         state.pending = false;
         state.error = true;
     }).addCase(filterUserByGender, (state, action: PayloadAction<any>) => {
 
-        const filteredUsers = JSON.parse(JSON.stringify(state.users.filter((user) => {
+        const filteredUsers = JSON?.parse(JSON?.stringify(state?.users?.filter((user) => {
             return user.gender === action.payload.toLowerCase()
         }
         )))
         return {
             ...state,
             filteredUsers:
-                filteredUsers.length > 0 ? filteredUsers : [...state.users]
+                filteredUsers?.length > 0 ? filteredUsers : [...state.users]
         }
 
     }).addCase(searchByName, (state, action: PayloadAction<any>) => {
         console.log(action.payload);
-        const filteredUsers = JSON.parse(JSON.stringify(state.users.filter((user) => {
+        const filteredUsers = JSON?.parse(JSON?.stringify(state?.users?.filter((user) => {
             return user.name.first.toLowerCase().includes(action.payload.toLowerCase())
         }
         )))
-        console.log(filteredUsers);
+
         return {
             ...state,
             filteredUsers:
@@ -64,4 +66,4 @@ export const userReducer = createReducer(initialState, builder => {
     });
 })
 
-export default userReducer;
+// export default userReducer;

@@ -5,8 +5,6 @@ import {
     ThunkAction,
 } from '@reduxjs/toolkit';
 import {
-    // persistReducer,
-    persistStore,
     FLUSH,
     REHYDRATE,
     PAUSE,
@@ -14,21 +12,15 @@ import {
     PURGE,
     REGISTER,
 } from "redux-persist";
-// import storage from "redux-persist/lib/storage";
 import { userReducer } from './features/user';
+import { countryReducer } from './features/country';
 
 
-
-// const persistConfig = {
-//     key: "root",
-//     storage,
-// };
 
 const rootReducer = combineReducers({
-    user: userReducer
+    user: userReducer,
+    country: countryReducer
 })
-
-// const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 
 export const store: any = configureStore({
@@ -41,8 +33,6 @@ export const store: any = configureStore({
             },
         }),
 });
-
-// export const persistor = persistStore(store);
 
 // create types for state and dispatch
 export type AppDispatch = typeof store.dispatch;
