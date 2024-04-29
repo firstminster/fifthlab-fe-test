@@ -1,4 +1,6 @@
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from "react-icons/md";
+import Button from "./button";
+import { ButtonSize, ButtonState } from "./button/enum";
 
 
 export interface Props {
@@ -17,8 +19,23 @@ const Pagination = ({ nPages, currentPage, setCurrentPage, pageStep }: Props) =>
     }
     return (
         <div className="flex gap-5">
-            <button onClick={goToPrevPage} disabled={pageStep === 1} className="bg-[#D2D3DA] h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90"><MdOutlineArrowBackIosNew /></button>
-            <button onClick={goToNextPage} disabled={pageStep === 1} className="bg-[#262B40] text-white  h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90"><MdOutlineArrowForwardIos /></button>
+            <Button
+                variant={ButtonState.SECONDARY}
+                icon={<MdOutlineArrowBackIosNew />}
+                disabled={pageStep === 1}
+                size={ButtonSize.lg}
+                onClick={() => goToPrevPage()}
+                className={"flex"}
+            />
+            <Button
+                variant={ButtonState.TERTIARY}
+                icon={<MdOutlineArrowForwardIos />}
+                disabled={pageStep === 1}
+                size={ButtonSize.lg}
+                onClick={() => goToNextPage()}
+                className={"flex "}
+            />
+
         </div>
     )
 }

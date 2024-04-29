@@ -1,10 +1,9 @@
+
 export enum ButtonState {
-    PRIMARY = "bg-blue-primary rounded flex justify-center items-center text-white",
-    SECONDARY = "bg-blue-primary rounded flex justify-center items-center text-white font-normal text-sm-headline my-1",
-    OUTLINE = "rounded flex justify-center items-center border border-primary-500 font-semibold text-sm-headline my-1",
-    TERTIARY = "rounded flex justify-center items-center px-2 pt-2.5 pb-2 text-primary-500 hover:text-primary-600 focus:text-primary-600 focus:outline-none focus:ring-0 active:text-primary-700",
-    DEACTIVATE = "rounded px-2 flex justify-center items-center pt-2.5 pb-2 text-white bg-[#E63532] focus:outline-none focus:ring-0 ",
-    ACTIVATE = "rounded flex justify-center items-center px-2 pt-2.5 pb-2 text-white bg-green-600 focus:outline-none focus:ring-0 ",
+    PRIMARY = "bg-[#74D6D0] rounded-xl shadow-xl hover:bg-opacity-90",
+    SECONDARY = "bg-[#D2D3DA] h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90",
+    NEUTRAL = "bg-[#7846C1] flex items-center justify-center text-sm font-medium text-white px-5 py-3 rounded-full hover:bg-opacity-90 h-14",
+    TERTIARY = "bg-[#262B40] text-white  h-10 w-12 flex justify-center items-center rounded-lg hover:bg-opacity-90",
 
 }
 

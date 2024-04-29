@@ -9,6 +9,8 @@ import Pagination from './Pagination'
 import { downloadCSV } from '../../utils'
 import User from '@/types'
 import { countrySelector, getCountries } from '@/features/country'
+import Button from './button'
+import { ButtonSize, ButtonState } from './button/enum'
 
 const UserLists = () => {
     const dispatch = useAppDispatch();
@@ -48,7 +50,6 @@ const UserLists = () => {
     const filterByNationality = (query: any) => {
         // setSearchTerm(e.target.value);
         dispatch(getUserByNationality(query))
-        console.log(query);
     };
 
     useEffect(() => {
@@ -96,9 +97,16 @@ const UserLists = () => {
             )}
 
             <div className="flex justify-between items-center pt-10">
-                <button
-                    onClick={downloadCSVUsers}
-                    disabled={pageStep === 1} className='bg-[#7846C1] flex items-center justify-center text-sm font-medium text-white px-5 py-3 rounded-full hover:bg-opacity-90 h-14'><MdOutlineCloudDownload size={25} className='mr-4' />Download Results</button>
+                <Button
+                    variant={ButtonState.NEUTRAL}
+                    icon={<MdOutlineCloudDownload size={25} className='mr-4' />}
+                    value={"Download Results"}
+                    disabled={pageStep === 1}
+                    size={ButtonSize.lg}
+                    onClick={() => downloadCSVUsers()}
+                    className={"flex"}
+                />
+
                 <Pagination
                     pageStep={pageStep}
                     nPages={nPages}

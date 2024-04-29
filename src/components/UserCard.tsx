@@ -3,6 +3,8 @@ import StdImage from './atom/StdImage'
 import { FaArrowRight } from 'react-icons/fa'
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md'
 import User from '@/types';
+import Button from './button';
+import { ButtonSize, ButtonState } from './button/enum';
 
 
 export interface Props {
@@ -18,7 +20,6 @@ const UserCard = ({ viewUserDetails, pageStep, item, toggleStatus }: Props) => {
     const getUserData = () => {
         viewUserDetails(item)
     }
-
 
     return (
         <section className={pageStep === 0 ? "bg-white w-full  px-6 py-10 rounded-xl shadow-xl my-10" : "hidden"}>
@@ -42,7 +43,15 @@ const UserCard = ({ viewUserDetails, pageStep, item, toggleStatus }: Props) => {
                         <p className="flex items-center mr-10 "><MdOutlinePhoneInTalk className='mr-2' />{cell}</p>
                     </div>
                 </div>
-                <button onClick={getUserData} className='bg-[#74D6D0] py-4 px-6 rounded-xl shadow-xl hover:bg-opacity-90 ' ><FaArrowRight className='text-white ' size={20} /></button>
+
+
+                <Button
+                    variant={ButtonState.PRIMARY}
+                    iconTwo={<FaArrowRight className='text-white ' size={20} />}
+                    size={ButtonSize.lg}
+                    onClick={() => getUserData()}
+                    className={"flex"}
+                />
             </div>
         </section>
     )
