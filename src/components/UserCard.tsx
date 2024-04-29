@@ -2,12 +2,13 @@ import React from 'react'
 import StdImage from './atom/StdImage'
 import { FaArrowRight } from 'react-icons/fa'
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md'
+import User from '@/types';
 
 
 export interface Props {
     viewUserDetails: (item: any) => void;
     pageStep: number
-    item: any
+    item: User
 }
 
 const UserCard = ({ viewUserDetails, pageStep, item }: Props) => {

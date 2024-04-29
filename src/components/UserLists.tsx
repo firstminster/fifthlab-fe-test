@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import Input from './input'
 import UserCard from './UserCard'
-import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos, MdOutlineCloudDownload } from 'react-icons/md'
+import { MdOutlineCloudDownload } from 'react-icons/md'
 import FilterHeader from './FilterHeader'
 import UserDetails from './UserDetails'
-// import { useAppDispatch, useAppSelector } from '@/redux/store'
 import { getAllUsers, userSelector } from '@/features/user'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import Pagination from './Pagination'
+import { downloadCSV } from '../../utils'
+import User from '@/types'
 
 const UserLists = () => {
     const dispatch = useAppDispatch();
@@ -18,6 +18,7 @@ const UserLists = () => {
 
     const {
         users,
+        filteredUsers,
         pending,
         error,
     } = useAppSelector(userSelector);
@@ -41,15 +42,25 @@ const UserLists = () => {
     // pagination
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-    const currentRecords = users.slice(indexOfFirstRecord, indexOfLastRecord);
-    const nPages = Math.ceil(users.length / recordsPerPage)
+    const currentRecords = filteredUsers.slice(indexOfFirstRecord, indexOfLastRecord);
+    const nPages = Math.ceil(filteredUsers.length / recordsPerPage)
+
+    // const downloadCSVLearners = () => {
+    //     downloadCSV(
+    //         currentRecords.map((item: any) => item.name),
+    //         users,
+    //         'users record'
+    //     )
+    // }
+
+    console.log(filteredUsers);
 
     return (
-        <div className="bg-[#F7F7FF] w-full rounded-[30px] h-auto  py-20 px-10 mt-20 xl:mt-0 ">
+        <div className="bg-[#F7F7FF] w-full rounded-[30px] h-auto py-20 px-10 mt-20 xl:mt-0 ">
             <FilterHeader pageStep={pageStep} />
             {pageStep >= 0 && (
                 <div className="">
-                    {currentRecords?.map((item: any, idx: number) => {
+                    {currentRecords?.map((item: User, idx: number) => {
                         return (
                             <UserCard key={item.cell} viewUserDetails={viewUserDetails} pageStep={pageStep} item={item} />
                         )
@@ -61,8 +72,10 @@ const UserLists = () => {
                 <UserDetails goBackToList={goBackToList} pageStep={pageStep} user={userData} />
             )}
 
-            <div className="flex justify-between">
-                <button disabled={pageStep === 1} className='bg-[#7846C1] flex items-center justify-center text-sm font-medium text-white px-5 py-3 rounded-full hover:bg-opacity-90 h-14'><MdOutlineCloudDownload size={25} className='mr-4' />Download Results</button>
+            <div className="flex justify-between items-center pt-10">
+                <button
+                    // onClick={downloadCSVLearners} 
+                    disabled={pageStep === 1} className='bg-[#7846C1] flex items-center justify-center text-sm font-medium text-white px-5 py-3 rounded-full hover:bg-opacity-90 h-14'><MdOutlineCloudDownload size={25} className='mr-4' />Download Results</button>
 
 
                 <Pagination

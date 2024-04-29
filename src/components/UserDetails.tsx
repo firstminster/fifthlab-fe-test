@@ -2,11 +2,12 @@ import React from 'react'
 import StdImage from './atom/StdImage'
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md'
 import { FaArrowLeft } from 'react-icons/fa'
+import User from '@/types';
 
 export interface Props {
     goBackToList: () => void;
     pageStep: number
-    user: any
+    user: User | any
 }
 
 const UserDetails = ({ goBackToList, pageStep, user }: Props) => {
