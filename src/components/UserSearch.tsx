@@ -32,7 +32,7 @@ const UserSearch = () => {
 
             <div className="mt-16">
                 <h4 className="text-white text-sm ">Show Users</h4>
-                <div className="flex justify-between gap-20">
+                <div className="flex justify-between items-start gap-3 lg:gap-20">
                     <FilterCard query={''} filterUser={handleFilterUserByGender} name={'All users'} icon={<FaUsers size={40} className='text-white' />} bgColor='bg-[#F935A9]' />
                     <FilterCard query={'male'} filterUser={handleFilterUserByGender} name={'Male users'} icon={<FaMale size={40} className='text-white' />} bgColor='bg-[#2EBCB5]' />
                     <FilterCard query={'female'} filterUser={handleFilterUserByGender} name={'Female users'} icon={<FaFemale size={40} className='text-white' />} bgColor='bg-[#7846C1]' />
