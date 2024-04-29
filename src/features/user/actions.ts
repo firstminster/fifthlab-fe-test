@@ -2,6 +2,7 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import http from "../../../utils/axios";
 
 export const searchByName = createAction('user/searchByName')
+export const toggleState = createAction('user/toggleState')
 export const filterUserByGender = createAction('user/filterUserByGender')
 
 //  Handle GET request for all users
@@ -46,6 +47,23 @@ export const getUserCSV = createAsyncThunk(
 //         }
 //     }
 // );
+
+//  Handle GET request to retrieve the nationalities
+export const getUserByNationality = createAsyncThunk(
+    "user/getUserByNationality",
+    async (query: string) => {
+        console.log(query);
+        const payload = query.toLowerCase()
+        try {
+            const response = await http.get(`?nat=${payload}`); // Get first 50 users by default
+            console.log(response);
+            return response.data.results;
+        } catch (error: any) {
+            alert(error.message || 'Something went wrong');
+            // return thunkAPI.rejectWithValue(error.message);
+        }
+    }
+);
 
 
 

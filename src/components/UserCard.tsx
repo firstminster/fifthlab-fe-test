@@ -9,9 +9,10 @@ export interface Props {
     viewUserDetails: (item: any) => void;
     pageStep: number
     item: User
+    toggleStatus: boolean
 }
 
-const UserCard = ({ viewUserDetails, pageStep, item }: Props) => {
+const UserCard = ({ viewUserDetails, pageStep, item, toggleStatus }: Props) => {
     const { name: { first, last }, location: { street: { name, number } }, picture: { large }, email, cell } = item;
 
     const getUserData = () => {
@@ -34,7 +35,7 @@ const UserCard = ({ viewUserDetails, pageStep, item }: Props) => {
                         {first} {last}
                     </h3>
                     <p className="mt-2 text-lg font-light italic">
-                        {number}, {name}, Nigeria
+                        {number}, {name},{toggleStatus && <span> Nigeria</span>}
                     </p>
                     <div className="flex items-center mt-8 w-full">
                         <p className="flex items-center mr-5"><MdOutlineMailOutline className='mr-2' />{email}</p>

@@ -3,7 +3,7 @@ import UserCard from './UserCard'
 import { MdOutlineCloudDownload } from 'react-icons/md'
 import FilterHeader from './FilterHeader'
 import UserDetails from './UserDetails'
-import { getAllUsers, getUserCSV, searchByName, userSelector } from '@/features/user'
+import { getAllUsers, getUserByNationality, getUserCSV, searchByName, toggleState, userSelector } from '@/features/user'
 import { useAppDispatch, useAppSelector } from '@/hooks'
 import Pagination from './Pagination'
 import { downloadCSV } from '../../utils'
@@ -22,6 +22,7 @@ const UserLists = () => {
         users,
         filteredUsers,
         response,
+        toggleStatus,
         pending,
         error,
 
@@ -44,6 +45,11 @@ const UserLists = () => {
     const filterSearchTerm = (e: any) => {
         setSearchTerm(e.target.value);
     };
+    const filterByNationality = (query: any) => {
+        // setSearchTerm(e.target.value);
+        dispatch(getUserByNationality(query))
+        console.log(query);
+    };
 
     useEffect(() => {
         dispatch(getAllUsers())
@@ -54,6 +60,8 @@ const UserLists = () => {
         dispatch(searchByName(searchTerm))
     }, [searchTerm, dispatch]);
 
+
+
     // pagination
     const indexOfLastRecord = currentPage * recordsPerPage;
     const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
@@ -62,7 +70,6 @@ const UserLists = () => {
 
     const downloadCSVUsers = () => {
         dispatch(getUserCSV())
-
         downloadCSV(
             [response],
             users,
@@ -70,17 +77,15 @@ const UserLists = () => {
         )
     }
 
-    console.log(countries);
-
 
     return (
         <div className="bg-[#F7F7FF] w-full rounded-[30px] h-auto py-20 px-10 mt-20 xl:mt-0 ">
-            <FilterHeader pageStep={pageStep} filterSearchTerm={filterSearchTerm} searchTerm={searchTerm} countries={countries} />
+            <FilterHeader pageStep={pageStep} filterSearchTerm={filterSearchTerm} searchTerm={searchTerm} countries={countries} filterByNationality={filterByNationality} />
             {pageStep >= 0 && (
                 <div className="">
                     {currentRecords?.map((item: User, idx: number) => {
                         return (
-                            <UserCard key={item.cell} viewUserDetails={viewUserDetails} pageStep={pageStep} item={item} />
+                            <UserCard key={item.cell} viewUserDetails={viewUserDetails} pageStep={pageStep} item={item} toggleStatus={toggleStatus} />
                         )
                     })}
                 </div>
