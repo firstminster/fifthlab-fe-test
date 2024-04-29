@@ -75,13 +75,6 @@ export const userReducer = createReducer(initialState, builder => {
                 action.payload.length > 0 ? filteredUsers : [...state.users]
         }
     }).addCase(toggleState, (state, action: PayloadAction<any>) => {
-        console.log(action.payload);
-        // const filteredUsers = JSON?.parse(JSON?.stringify(state?.users?.filter((user) => {
-        //     return user.name.first.toLowerCase().includes(action.payload.toLowerCase())
-        // }
-        // )))
-        const toggleStatus = action.payload
-
         return {
             ...state,
             toggleStatus: action.payload
@@ -90,4 +83,3 @@ export const userReducer = createReducer(initialState, builder => {
     });
 })
 
-// export default userReducer;

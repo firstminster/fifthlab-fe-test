@@ -15,7 +15,7 @@ const UserDetails = ({ goBackToList, pageStep, user }: Props) => {
     return (
         <div className={pageStep === 1 ? "my-20" : "hidden"}>
             <button onClick={goBackToList} className='flex items-center uppercase mb-6' ><FaArrowLeft className='text-[#74D6D0] mr-4' size={20} /> Results</button>
-            <div className="flex items-start justify-start">
+            <div className="flex flex-col lg:flex-row items-center lg:items-start justify-center lg:justify-start">
                 <StdImage
                     src={large}
                     alt="lendsqr-logo"
@@ -23,7 +23,7 @@ const UserDetails = ({ goBackToList, pageStep, user }: Props) => {
                     width={220}
                     height={220}
                 />
-                <div className="ml-20">
+                <div className="flex flex-col items-center lg:items-start lg:ml-20">
                     <div className="flex items-center mt-3">
                         <h3 className="text-2xl font-black mr-4">
                             {first} {last}

@@ -15,15 +15,15 @@ const UserSearch = () => {
         setSearchTerm(e.target.value);
     };
 
-    const handleFilterUserByGender = (query: any) => {
-        dispatch(filterUserByGender(query));
-    }
 
     useEffect(() => {
         dispatch(searchByName(searchTerm))
     }, [searchTerm, dispatch]);
 
 
+    const handleFilterUserByGender = (query: any) => {
+        dispatch(filterUserByGender(query));
+    }
     return (
         <div className="w-full  px-20 my-auto pt-10 xl:pt-0">
             <h2 className="text-3xl text-white font-thin mb-8">Hello, <span className="font-black ">Emerald</span> </h2>
