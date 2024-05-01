@@ -53,7 +53,7 @@ const UserLists = () => {
 
     useEffect(() => {
         dispatch(getAllUsers())
-        dispatch(getCountries())
+        // dispatch(getCountries())
     }, [])
 
     useEffect(() => {

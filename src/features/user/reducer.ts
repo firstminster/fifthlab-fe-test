@@ -59,11 +59,10 @@ export const userReducer = createReducer(initialState, builder => {
         return {
             ...state,
             filteredUsers:
-                filteredUsers?.length > 0 ? filteredUsers : [...state.users]
+                filteredUsers?.length > 0 ? [...filteredUsers] : [...state.users]
         }
 
     }).addCase(searchByName, (state, action: PayloadAction<any>) => {
-        console.log(action.payload);
         const filteredUsers = JSON?.parse(JSON?.stringify(state?.users?.filter((user) => {
             return user.name.first.toLowerCase().includes(action.payload.toLowerCase())
         }
@@ -72,7 +71,7 @@ export const userReducer = createReducer(initialState, builder => {
         return {
             ...state,
             filteredUsers:
-                action.payload.length > 0 ? filteredUsers : [...state.users]
+                action.payload.length > 0 ? [...filteredUsers] : [...state.users]
         }
     }).addCase(toggleState, (state, action: PayloadAction<any>) => {
         return {

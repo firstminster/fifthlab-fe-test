@@ -2,7 +2,7 @@
 import { Key, useEffect, useState } from 'react';
 import Input from './input'
 import { useAppDispatch, useAppSelector } from '@/hooks';
-import { searchByName } from '@/features/user';
+import { getAllUsers, searchByName } from '@/features/user';
 import ToggleButton from './ToggleButton';
 import { countrySelector, getCountries } from '@/features/country';
 
@@ -22,9 +22,9 @@ const FilterHeader = ({ pageStep, filterSearchTerm, searchTerm, filterByNational
     } = useAppSelector(countrySelector);
 
     useEffect(() => {
-
         dispatch(getCountries())
     }, [])
+
     return (
         <div>
             <h3 className="text-2xl font-bold ">{pageStep === 0 ? 'All Users' : 'User List'}</h3>

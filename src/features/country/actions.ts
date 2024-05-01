@@ -8,7 +8,6 @@ export const getCountries = createAsyncThunk(
     async () => {
         try {
             const response = await axios.get(`https://restcountries.com/v3.1/all`);
-            console.log(response);
             return response?.data;
         } catch (error: any) {
             alert(error.message || 'Something went wrong');

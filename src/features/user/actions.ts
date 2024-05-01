@@ -52,11 +52,9 @@ export const getUserCSV = createAsyncThunk(
 export const getUserByNationality = createAsyncThunk(
     "user/getUserByNationality",
     async (query: string) => {
-        console.log(query);
         const payload = query.toLowerCase()
         try {
             const response = await http.get(`?nat=${payload}`); // Get first 50 users by default
-            console.log(response);
             return response.data.results;
         } catch (error: any) {
             alert(error.message || 'Something went wrong');

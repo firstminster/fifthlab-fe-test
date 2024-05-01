@@ -5,14 +5,16 @@ export interface FilterCardProps {
     icon: ReactElement;
     bgColor: string
     query: string
-    filterUser: (query: string) => void
+    filterUser?: any
+    getUser?: any
 }
 
 
-const FilterCard = ({ name, icon, bgColor, query, filterUser, }: FilterCardProps) => {
+const FilterCard = ({ name, icon, bgColor, query, filterUser, getUser }: FilterCardProps) => {
 
     const handleClick = () => {
         filterUser(query);
+        getUser()
     };
 
     return (
