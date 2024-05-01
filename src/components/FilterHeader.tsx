@@ -23,7 +23,7 @@ const FilterHeader = ({ pageStep, filterSearchTerm, searchTerm, filterByNational
 
     useEffect(() => {
         dispatch(getCountries())
-    }, [])
+    }, [dispatch])
 
     return (
         <div>

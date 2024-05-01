@@ -10,7 +10,7 @@ export const getAllUsers = createAsyncThunk(
     "user/getAllUsers",
     async () => {
         try {
-            const response = await http.get(`?results=100`); // Get first 50 users by default
+            const response = await http.get(`?results=5000`); // Get first 50 users by default
             return response.data.results;
         } catch (error: any) {
             alert(error.message || 'Something went wrong');
