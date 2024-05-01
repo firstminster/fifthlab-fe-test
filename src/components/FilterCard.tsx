@@ -14,7 +14,7 @@ const FilterCard = ({ name, icon, bgColor, query, filterUser, getUser }: FilterC
 
     const handleClick = () => {
         filterUser(query);
-        getUser()
+        if (!query) getUser()
     };
 
     return (
