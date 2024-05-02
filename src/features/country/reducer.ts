@@ -15,13 +15,13 @@ const initialState: CountryState = {
 
 export const countryReducer = createReducer(initialState, builder => {
 
-    builder.addCase(getCountries.pending, state => {
+    builder.addCase(getCountries.pending, (state: { pending: boolean; error: boolean; }) => {
         state.pending = true;
         state.error = false;
-    }).addCase(getCountries.fulfilled, (state, { payload }) => {
+    }).addCase(getCountries.fulfilled, (state: { pending: boolean; countries: any; }, { payload }: any) => {
         state.pending = false;
         state.countries = payload;
-    }).addCase(getCountries.rejected, state => {
+    }).addCase(getCountries.rejected, (state: { pending: boolean; error: boolean; }) => {
         state.pending = false;
         state.error = true;
     })
