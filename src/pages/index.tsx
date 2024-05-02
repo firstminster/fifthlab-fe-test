@@ -1,4 +1,4 @@
-import UserSearch from "@/components/UserSearch";
+import UserSearch from "@/components/UserSearch/UserSearch";
 import UserLists from "@/components/UserLists";
 
 

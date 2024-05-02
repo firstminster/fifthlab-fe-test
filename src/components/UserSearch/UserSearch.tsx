@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
-import FilterCard from './FilterCard'
+import FilterCard from '../FilterCard'
 import { FaFemale, FaMale, FaUsers } from 'react-icons/fa'
-import Input from './input'
-import { useAppDispatch } from '@/hooks'
+import Input from '../input'
+// import { useAppDispatch } from '@/hooks'
 import { filterUserByGender, getAllUsers, searchByName } from '@/features/user'
+import { useAppDispatch } from '@/store'
 
 
 const UserSearch = () => {
