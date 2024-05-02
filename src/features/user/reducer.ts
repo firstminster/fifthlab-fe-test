@@ -22,36 +22,36 @@ const initialState: UserState = {
 
 
 export const userReducer = createReducer(initialState, builder => {
-    builder.addCase(getAllUsers.pending, state => {
+    builder.addCase(getAllUsers.pending, (state: { pending: boolean; error: boolean; }) => {
         state.pending = true;
         state.error = false;
-    }).addCase(getAllUsers.fulfilled, (state, { payload }) => {
+    }).addCase(getAllUsers.fulfilled, (state: { pending: boolean; users: any; filteredUsers: any[]; }, { payload }: any) => {
         state.pending = false;
         state.users = payload;
         state.filteredUsers = [...payload]
-    }).addCase(getAllUsers.rejected, state => {
+    }).addCase(getAllUsers.rejected, (state: { pending: boolean; error: boolean; }) => {
         state.pending = false;
         state.error = true;
-    }).addCase(getUserCSV.pending, state => {
+    }).addCase(getUserCSV.pending, (state: { pending: boolean; error: boolean; }) => {
         state.pending = true;
         state.error = false;
-    }).addCase(getUserCSV.fulfilled, (state, { payload }) => {
+    }).addCase(getUserCSV.fulfilled, (state: { pending: boolean; response: any; }, { payload }: any) => {
         state.pending = false;
         state.response = payload;
-    }).addCase(getUserCSV.rejected, state => {
+    }).addCase(getUserCSV.rejected, (state: { pending: boolean; error: boolean; }) => {
         state.pending = false;
         state.error = true;
-    }).addCase(getUserByNationality.pending, state => {
+    }).addCase(getUserByNationality.pending, (state: { pending: boolean; error: boolean; }) => {
         state.pending = true;
         state.error = false;
-    }).addCase(getUserByNationality.fulfilled, (state, { payload }) => {
+    }).addCase(getUserByNationality.fulfilled, (state: { pending: boolean; users: any; filteredUsers: any[]; }, { payload }: any) => {
         state.pending = false;
         state.users = payload;
         state.filteredUsers = [...payload]
-    }).addCase(getUserByNationality.rejected, state => {
+    }).addCase(getUserByNationality.rejected, (state: { pending: boolean; error: boolean; }) => {
         state.pending = false;
         state.error = true;
-    }).addCase(filterUserByGender, (state, action: PayloadAction<any>) => {
+    }).addCase(filterUserByGender, (state: { users: any[]; }, action: PayloadAction<any>) => {
         const filteredUsers = JSON?.parse(JSON?.stringify(state?.users?.filter((user) => {
             return user.gender === action.payload.toLowerCase()
         }
@@ -62,7 +62,7 @@ export const userReducer = createReducer(initialState, builder => {
                 filteredUsers?.length > 0 ? [...filteredUsers] : [...state.users]
         }
 
-    }).addCase(searchByName, (state, action: PayloadAction<any>) => {
+    }).addCase(searchByName, (state: { users: any[]; }, action: PayloadAction<any>) => {
         const filteredUsers = JSON?.parse(JSON?.stringify(state?.users?.filter((user) => {
             return user.name.first.toLowerCase().includes(action.payload.toLowerCase())
         }
@@ -73,7 +73,7 @@ export const userReducer = createReducer(initialState, builder => {
             filteredUsers:
                 action.payload.length > 0 ? [...filteredUsers] : [...state.users]
         }
-    }).addCase(toggleState, (state, action: PayloadAction<any>) => {
+    }).addCase(toggleState, (state: any, action: PayloadAction<any>) => {
         return {
             ...state,
             toggleStatus: action.payload
