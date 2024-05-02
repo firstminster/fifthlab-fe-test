@@ -51,7 +51,7 @@ export const userReducer = createReducer(initialState, builder => {
     }).addCase(getUserByNationality.rejected, (state: { pending: boolean; error: boolean; }) => {
         state.pending = false;
         state.error = true;
-    }).addCase(filterUserByGender, (state: { users: any[]; }, action: PayloadAction<any>) => {
+    }).addCase(filterUserByGender, (state, action: PayloadAction<any>) => {
         const filteredUsers = JSON?.parse(JSON?.stringify(state?.users?.filter((user) => {
             return user.gender === action.payload.toLowerCase()
         }
@@ -62,7 +62,7 @@ export const userReducer = createReducer(initialState, builder => {
                 filteredUsers?.length > 0 ? [...filteredUsers] : [...state.users]
         }
 
-    }).addCase(searchByName, (state: { users: any[]; }, action: PayloadAction<any>) => {
+    }).addCase(searchByName, (state, action: PayloadAction<any>) => {
         const filteredUsers = JSON?.parse(JSON?.stringify(state?.users?.filter((user) => {
             return user.name.first.toLowerCase().includes(action.payload.toLowerCase())
         }
@@ -73,7 +73,7 @@ export const userReducer = createReducer(initialState, builder => {
             filteredUsers:
                 action.payload.length > 0 ? [...filteredUsers] : [...state.users]
         }
-    }).addCase(toggleState, (state: any, action: PayloadAction<any>) => {
+    }).addCase(toggleState, (state, action: PayloadAction<any>) => {
         return {
             ...state,
             toggleStatus: action.payload

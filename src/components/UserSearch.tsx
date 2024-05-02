@@ -8,7 +8,7 @@ import { filterUserByGender, getAllUsers, searchByName } from '@/features/user'
 
 const UserSearch = () => {
     const dispatch = useAppDispatch();
-    const [searchTerm, setSearchTerm] = useState<any>("");
+    const [searchTerm, setSearchTerm] = useState<any | undefined>("");
 
 
     const filterSearchTerm = (e: any) => {
