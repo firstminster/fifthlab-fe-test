@@ -8,7 +8,7 @@ export interface InputProps {
     icon?: ReactElement;
     placeholder: string;
     // disabled?: boolean;
-    cssstyles: string;
+    cssstyles?: string;
     [key: string]: any;
 }
 
@@ -23,7 +23,7 @@ const Input: FC<InputProps> = ({
 }) => {
     return (
         <div className="relative">
-            <SlMagnifier className="absolute top-5 left-5 " size={25} />
+            <SlMagnifier className="absolute top-5 left-5 " size={25} data-testid="rob-input-icon" />
             <input type={type} name={name} placeholder={placeholder} className={`${cssstyles} `}   {...props} />
         </div>
     )

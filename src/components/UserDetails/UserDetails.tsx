@@ -1,5 +1,5 @@
 import React from 'react'
-import StdImage from './atom/StdImage'
+import StdImage from '../atom/StdImage'
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md'
 import { FaArrowLeft } from 'react-icons/fa'
 import User from '@/types';

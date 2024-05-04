@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import FilterCard from '../FilterCard'
+import FilterCard from '../FilterCard/FilterCard'
 import { FaFemale, FaMale, FaUsers } from 'react-icons/fa'
 import Input from '../input'
 // import { useAppDispatch } from '@/hooks'

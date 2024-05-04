@@ -1,9 +1,9 @@
 
 import { Key, useEffect, useState } from 'react';
-import Input from './input'
+import Input from '../input'
 import { useAppDispatch, useAppSelector } from '@/hooks';
 import { getAllUsers, searchByName } from '@/features/user';
-import ToggleButton from './ToggleButton';
+import ToggleButton from '../ToggleButton/ToggleButton';
 import { countrySelector, getCountries } from '@/features/country';
 
 

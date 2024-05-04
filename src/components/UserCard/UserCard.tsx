@@ -1,10 +1,10 @@
 import React from 'react'
-import StdImage from './atom/StdImage'
+import StdImage from '../atom/StdImage'
 import { FaArrowRight } from 'react-icons/fa'
 import { MdOutlineMailOutline, MdOutlinePhoneInTalk } from 'react-icons/md'
 import User from '@/types';
-import Button from './button';
-import { ButtonSize, ButtonState } from './button/enum';
+import Button from '../button';
+import { ButtonSize, ButtonState } from '../button/enum';
 
 
 export interface Props {

@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react'
-import UserCard from './UserCard'
+import UserCard from '../UserCard/UserCard'
 import { MdOutlineCloudDownload } from 'react-icons/md'
-import FilterHeader from './FilterHeader'
-import UserDetails from './UserDetails'
+import FilterHeader from '../FilterHeader/FilterHeader'
+import UserDetails from '../UserDetails/UserDetails'
 import { getAllUsers, getUserByNationality, getUserCSV, searchByName, toggleState, userSelector } from '@/features/user'
 import { useAppDispatch, useAppSelector } from '@/hooks'
-import Pagination from './Pagination'
-import { downloadCSV } from '../../utils'
+import Pagination from '../Pagination'
+import { downloadCSV } from '../../../utils'
 import User from '@/types'
 import { countrySelector, getCountries } from '@/features/country'
-import Button from './button'
-import { ButtonSize, ButtonState } from './button/enum'
+import Button from '../button'
+import { ButtonSize, ButtonState } from '../button/enum'
 
 const UserLists = () => {
     const dispatch = useAppDispatch();
@@ -53,14 +53,11 @@ const UserLists = () => {
 
     useEffect(() => {
         dispatch(getAllUsers())
-        // dispatch(getCountries())
     }, [])
 
     useEffect(() => {
         dispatch(searchByName(searchTerm))
     }, [searchTerm, dispatch]);
-
-
 
     // pagination
     const indexOfLastRecord = currentPage * recordsPerPage;

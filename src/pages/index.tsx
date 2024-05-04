@@ -1,5 +1,5 @@
 import UserSearch from "@/components/UserSearch/UserSearch";
-import UserLists from "@/components/UserLists";
+import UserLists from "@/components/UserList/UserLists";
 
 
 export default function Home() {
