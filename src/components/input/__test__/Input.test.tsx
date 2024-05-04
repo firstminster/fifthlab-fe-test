@@ -2,8 +2,6 @@ import { render, screen, fireEvent } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import Input from '..'
 
-const mockSetTodos = jest.fn()
-
 describe('Input', () => {
     describe('Render', () => {
         it('should render the input', () => {
@@ -32,7 +30,7 @@ describe('Input', () => {
         it('should display an input icon', () => {
             render(<Input name='user' type='text' placeholder='Find a user' />) // ARRANGE
 
-            const icon = screen.getByTestId("rob-input-info"); //ACT
+            const icon = screen.getByTestId("rob-input-icon"); //ACT
             expect(icon).toBeInTheDocument(); // ASSERT
         })
 

@@ -15,7 +15,7 @@ export interface IProps {
 }
 
 const Button: FC<IProps> = ({
-    value,
+    value = "",
     variant = ButtonState.PRIMARY,
     size = ButtonSize.lg,
     icon,
